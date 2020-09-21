@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <locale.h>
 #include "trees.h"
 
 int main () {
+  setlocale(LC_ALL, "Portuguese");
   TAB *a0 = inicializar ();
   TAB *a5 = criar (5, NULL, NULL);
   TAB *a6 = criar (6, NULL, NULL);
