@@ -20,7 +20,7 @@ TAB *criar (int r, TAB *e, TAB *d) {
   novo->dir = d;
   return novo;
 }
-
+/*
 void imprimir (TAB *A) {
   printf ("< ");
   if (!vazia (A)) {
@@ -29,6 +29,37 @@ void imprimir (TAB *A) {
       imprimir (A->esq);
       imprimir (A->dir);
     }
+  }
+  printf (">");
+}
+*/
+
+void pre_ordem (TAB *a) {
+  printf ("<");
+  if (!vazia (a)) {
+    printf ("%d", a->info);
+    pre_ordem (a->esq);
+    pre_ordem (a->dir);
+  }
+  printf (">");
+}
+
+void pos_ordem (TAB *a) {
+  printf ("<");
+  if (!vazia (a)) {
+    pos_ordem (a->esq);
+    pos_ordem (a->dir);
+    printf ("%d", a->info);
+  }
+  printf (">");
+}
+
+void ordem_simetrica (TAB *a) {
+  printf ("<");
+  if (!vazia (a)) {
+    ordem_simetrica (a->esq);
+    printf ("%d", a->info);
+    ordem_simetrica (a->dir);
   }
   printf (">");
 }
