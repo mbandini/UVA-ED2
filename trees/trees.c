@@ -4,6 +4,8 @@
 
 int main () {
   setlocale(LC_ALL, "Portuguese");
+
+  int resultado;
   TAB *a0 = inicializar ();
   TAB *a5 = criar (5, NULL, NULL);
   TAB *a6 = criar (6, NULL, NULL);
@@ -36,7 +38,21 @@ int main () {
 
   printf ("Quantidade de folhas: %d\n", cf (a3));
 
-  // liberar (a1);
+  resultado = buscar (a1, 27);
+  if (!resultado) {
+    printf ("Elemento não encontrado\n");
+  }
+  else {
+    printf ("Elemento encontrado\n");
+  }
+
+  printf ("Resultado: %d\n", buscar_elem (a1, 4));
+
+  printf ("Liberando memória...\n");
+  liberar (a1);
+  printf ("Memória liberada\n");
+
+  ordem_simetrica (a1);
 
   return 0;
 }

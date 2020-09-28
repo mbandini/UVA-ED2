@@ -71,3 +71,29 @@ int cf (TAB *a) {
 		return 1;
 	return cf (a->esq) + cf (a->dir);
 }
+
+int buscar (TAB *a, int elem) { // retorna 0 se o elemento não existe ou 1 caso contrário
+  if (!a) {
+    return 0;
+  }
+  return (elem == a->info) || buscar (a->esq, elem) || buscar (a->dir, elem);
+}
+
+// TODO: CORRIGIR ESTA FUNÇÃO
+int buscar_elem (TAB *a, int elem) { // retorna 0 se o elemento não existe ou o elemento caso contrário
+  if (!a) {
+    return 0;
+  }
+  if (elem == a->info) {
+    return a->info;
+  }
+  return buscar_elem (a->esq, elem) || buscar_elem (a->dir, elem);
+}
+
+void liberar (TAB *a) {
+  if (!vazia(a)) {
+    liberar (a->esq);
+    liberar (a->dir);
+    free (a);
+  }
+}
