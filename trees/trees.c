@@ -6,6 +6,7 @@ int main () {
   setlocale(LC_ALL, "Portuguese");
 
   int resultado;
+  TAB *result;
   TAB *a0 = inicializar ();
   TAB *a5 = criar (5, NULL, NULL);
   TAB *a6 = criar (6, NULL, NULL);
@@ -46,7 +47,13 @@ int main () {
     printf ("Elemento encontrado\n");
   }
 
-  printf ("Resultado: %d\n", buscar_elem (a1, 4));
+  result = buscar_elem (a1, 10);
+  if (resultado) {
+    printf ("Resultado nó: %d\n", result->info);
+  }
+  else {
+    printf ("Resultado nó: Não encontrado\n");
+  }
 
   printf ("Liberando memória...\n");
   liberar (a1);

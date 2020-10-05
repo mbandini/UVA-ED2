@@ -93,23 +93,21 @@ int buscar(TAB *a, int elem)
 }
 
 // TODO: CORRIGIR ESTA FUNÇÃO
-int buscar_elem(TAB *a, int elem) { // retorna 0 se o elemento não existe ou o elemento caso contrário
+TAB *buscar_elem(TAB *a, int elem) {
   if (!a)
   {
-    return 0;
+    return NULL;
   }
   if (elem == a->info)
   {
-    return a->info;
+    return a;
   }
-  if (elem > a->info)
-  {
-    return buscar_elem(a->dir, elem);
+
+  TAB *e = buscar_elem(a->esq, elem);
+  if (!e) {
+    e = buscar_elem(a->dir, elem);
   }
-  else
-  {
-    return buscar_elem(a->esq, elem);
-  }
+  return e;
 }
 
 void liberar(TAB *a)
