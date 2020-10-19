@@ -97,3 +97,37 @@ int buscar (TABB *a, int elem) {
   }
   return buscar (a->dir, elem);
 }
+
+// Q4
+int maior (TABB *a) {
+	if (!a)
+		return -1; // admite-se que a árvore possui valores maiores ou iguais
+	else {
+		if (!vazia (a->dir))
+			return maior (a->dir);
+		else
+			return a->info;
+	}
+}
+
+int menor (TABB *a) {
+	if (!a)
+		return -1; // admite-se que a árvore possui valores maiores ou iguais
+	else {
+		if (!vazia (a->esq))
+			return menor (a->esq);
+		else
+			return a->info;
+	}
+}
+// Supondo uma TABB com 7 elementos -> 3 comparações
+/*
+Exemplo: [2, 3, 4, 5, 6, 7, 8]
+          5
+        /   \
+       3     7
+      / \   / \
+     2   4 6   8
+*/
+// Complexidade assintótica de pior caso das funções maior e menor => O(log n) - logarítmica
+// OBS: para simplificar, podemos considerar as árvores balanceadas

@@ -119,3 +119,42 @@ void liberar(TAB *a)
     free(a);
   }
 }
+
+// Q1
+int igual (TAB *a1, TAB *a2) { //0 = diferente | 1 = igual
+	if ((!a1) && (!a2)) // nenhuma das árvores existe (iguais)
+		return 1;
+	if ((!a1) || (!a2)) // apenas uma das árvores existe (diferentes)
+		return 0;
+	if (a1->info == a2->info) // recursividade para avaliar amabas as sub-árvores (se iguais, retorna 1)
+		return igual (a1->esq, a2->esq) && igual (a1->dir, a2->dir);
+	return 0; // sub-árvores diferentes (retorna 0)
+}
+// Complexidade assintótica de pior caso da função igual => O(n) - linear
+
+// Q2
+TAB* copia (TAB *a) {
+	if (!a)
+		return NULL;
+	else {
+		TAB *c = criar (a->info, a->esq, a->dir);
+		if (!vazia (a->esq) || (!vazia (a->dir))) { // se pelo menos uma sub-árvore nao for vazia
+			copia (a->esq);
+			copia (a->dir);
+		}
+		return c;
+	}
+}
+// Complexidade assintótica de pior caso da função copia => O(n) - linear
+
+// Q3
+int conta_pais_um_filho (TAB *a) {
+	if (!a)
+		return 0;
+	if ((vazia (a->esq)) && (!vazia (a->dir))) // se tem apenas sub-árvore à esquerda
+		return 1 + conta_pais_um_filho(a->esq);  // conta do lado esquerdo
+	if ((!vazia (a->esq)) && (vazia (a->dir))) // se tem apenas sub-árvore à direita
+		return 1 + conta_pais_um_filho(a->dir);  // conta do lado direito
+	return conta_pais_um_filho(a->esq) + conta_pais_um_filho(a->dir);  // tem sub-árvores em ambos os lados
+}
+// Complexidade assintótica de pior caso da função conta_pais_um_filho => O(n) - linear
