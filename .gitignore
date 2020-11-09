@@ -90,3 +90,5 @@ dkms.conf
 
 # execs
 trees/trees
+trees/tabb
+trees/heap

@@ -17,11 +17,11 @@ void max_heapfy (int *v, int n, int pos) {
   int e = esquerda(pos);
   int d = direita(pos);
 
-  if ((e <= n) && (v[e] > v[pos])) {
+  if ((e <= n) && (v[e] > v[maior])) {
     maior = e;
   }
 
-  if ((d <= n) && (v[d] > v[pos])) {
+  if ((d <= n) && (v[d] > v[maior])) {
     maior = d;
   }
 
